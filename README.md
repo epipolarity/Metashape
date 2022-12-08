@@ -19,7 +19,7 @@ based on this code: https://www.agisoft.com/forum/index.php?topic=3045.msg16048#
 
 **Tested in Metashape 1.7**
 
-Build Orthomosaics in all enabled chunks, prompting the user for the projection in local coordinates.
+Build Orthomosaics in all enabled chunks, prompting the user for the local coordinates planar projection to use (top, bottom, front, back, left, right).
 
 If different projections are required in different chunks, these can be specified by including the desired projection in parentheses within the respective chunk label (name), and selecting 'c' (by chunk) when prompted for the projection.
 
