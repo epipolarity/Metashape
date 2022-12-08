@@ -4,7 +4,7 @@ Place these files in
 
     C:\Users\<username>\AppData\Local\Agisoft\Metashape Pro\scripts\
     
-and they will be added to a 'Custom Functions' menu when you next start Metashape
+and they will be added to a 'Custom Functions' menu each time you start Metashape
 
 ## bBox2Coords.py
 
