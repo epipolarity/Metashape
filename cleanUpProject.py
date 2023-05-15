@@ -20,5 +20,7 @@ def clean_up():
         message = f"{depth_maps} Depth Maps removed from {depth_maps_chunks} chunk(s)\nOrthophotos removed from 'up to' {orthophotos_chunks} chunk(s)\n\nSave Project now?"
         if app.getBool(label=message):
             app.document.save()
+    else:
+        app.messageBox("No depth maps or orthomosaics found")
             
 Metashape.app.addMenuItem("Custom Functions/Clean Up Project for Archive", clean_up)
