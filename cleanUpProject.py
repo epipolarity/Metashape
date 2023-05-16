@@ -13,8 +13,9 @@ def clean_up():
             chunk.depth_maps = None
             depth_maps_chunks += 1
         for ortho in chunk.orthomosaics:
-            ortho.removeOrthophotos()
-            orthophotos_chunks += 1
+            if ortho:
+                ortho.removeOrthophotos()
+                orthophotos_chunks += 1
 
     if depth_maps + depth_maps_chunks + orthophotos_chunks > 0:
         message = f"{depth_maps} Depth Maps removed from {depth_maps_chunks} chunk(s)\nOrthophotos removed from 'up to' {orthophotos_chunks} chunk(s)\n\nSave Project now?"
