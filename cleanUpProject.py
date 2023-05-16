@@ -8,9 +8,11 @@ def clean_up():
 
     app = Metashape.app
     for chunk in app.document.chunks:
-        if chunk.depth_maps:
-            depth_maps += len(chunk.depth_maps.items())
-            chunk.depth_maps = None
+        print(f"Checking chunk '{chunk.label}'")
+        if chunk.depth_maps_sets:
+            for dm_set in chunk.depth_maps_sets:
+                depth_maps += len(dm_set.items())
+                dm_set.clear()
             depth_maps_chunks += 1
         for ortho in chunk.orthomosaics:
             if ortho:
