@@ -3,8 +3,9 @@ import Metashape
 def clean_up():
 
     depth_maps = 0
-    depth_maps_chunks = 0
-    orthophotos_chunks = 0
+    orthomosaics = 0
+    key_points = 0
+    dense_clouds = 0
 
     app = Metashape.app
     for chunk in app.document.chunks:
@@ -13,17 +14,25 @@ def clean_up():
             for dm_set in chunk.depth_maps_sets:
                 depth_maps += len(dm_set.items())
                 dm_set.clear()
-            depth_maps_chunks += 1
         for ortho in chunk.orthomosaics:
             if ortho:
                 ortho.removeOrthophotos()
-                orthophotos_chunks += 1
+                orthomosaics += 1
+        if chunk.tie_points:
+            chunk.tie_points.removeKeypoints()
+            key_points += 1
+        if chunk.point_clouds:
+            for pc in chunk.point_clouds:
+                if pc:
+                    pc.clear()
+                    dense_clouds += 1
 
-    if depth_maps + depth_maps_chunks + orthophotos_chunks > 0:
-        message = f"{depth_maps} Depth Maps removed from {depth_maps_chunks} chunk(s)\nOrthophotos removed from 'up to' {orthophotos_chunks} chunk(s)\n\nSave Project now?"
+    if depth_maps + orthomosaics + key_points + dense_clouds > 0:
+        message = f"{depth_maps} Depth Maps removed\nOrthophotos removed from 'up to' {orthomosaics} orthomosaics\n" + \
+                  f"Key points removed from 'up to' {key_points} chunks\n{dense_clouds} dense clouds removed\n\nSave Project now?"
         if app.getBool(label=message):
             app.document.save()
     else:
-        app.messageBox("No depth maps or orthomosaics found")
+        app.messageBox("Nothing to clean up")
             
 Metashape.app.addMenuItem("Custom Functions/Clean Up Project for Archive", clean_up)
