@@ -54,3 +54,17 @@ and this snippet from the 1.5.0 python api pdf: https://www.agisoft.com/pdf/meta
 **Tested in Metashape 1.7**
 
 Create camera groups in each enabled chunk, and name them according to the name of the directory in which the respective image files reside.
+
+
+## cleanUpProject.py
+
+**Tested in Metashape 2.0**
+
+Remove depth maps, dense clouds, orthophotos (not orthomosaics), key points from a list of projects to be acrhived.
+
+
+## setVerticalAxis.py
+
+**Tested in Metashape 2.0**
+
+Renames the currently selected marker to "ortho_origin" and creates a new marker 2 'units' directly above it with the name "ortho_z". You can then create a marker at any location in your desired x-axis and name this "ortho_x" and use these three markers in the generate orthomosaic dialog using 'vertical' marker alignment method to generate a repeatably oriented orthomosaic. requires 'up direction' is already established in coordinate system.
