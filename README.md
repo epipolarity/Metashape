@@ -60,7 +60,7 @@ Create camera groups in each enabled chunk, and name them according to the name 
 
 **Tested in Metashape 2.0**
 
-Remove depth maps, dense clouds, orthophotos (not orthomosaics), key points from a list of projects to be acrhived.
+Remove depth maps, dense clouds, orthophotos (not orthomosaics), key points from current project.
 
 
 ## setVerticalAxis.py
